@@ -1,0 +1,10 @@
+FROM python:3.11-slim
+WORKDIR /opt/StaticJinjaPlus
+ADD https://github.com/MrDave/StaticJinjaPlus.git /opt/StaticJinjaPlus
+RUN python3 -m venv venv \
+    && venv/bin/pip install --no-cache-dir -r requirements.txt
+ENTRYPOINT ["./venv/bin/python", "main.py"]
+CMD ["--srcpath=data/templates/", "--outpath=data/build/"]
+
+
+
